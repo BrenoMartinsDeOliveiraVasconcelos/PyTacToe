@@ -1,5 +1,8 @@
 import tkinter as tk
 from lib import lib
+import json
+
+table = json.load(open("./table.json"))
 
 
 def main():
@@ -8,7 +11,8 @@ def main():
 
     r, c = 0, -1
     foto = tk.PhotoImage(file="./assets/empty.png")
-    overlabel = tk.PhotoImage(file="./assets/circle.png")
+
+    overlabel = tk.PhotoImage(file=f"./assets/{table['next']}.png")
 
     for i in range(0, 9):
         c += 1
