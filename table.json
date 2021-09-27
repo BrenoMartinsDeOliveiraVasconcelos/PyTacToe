@@ -1,1 +1,20 @@
-{"next": "circle"}
+{
+  "next": "circle",
+  "positions": [
+    [
+      "a",
+      "b",
+      "c"
+    ],
+    [
+      "d",
+      "e",
+      "f"
+    ],
+    [
+      "g",
+      "h",
+      "i"
+    ]
+  ]
+}

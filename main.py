@@ -12,18 +12,17 @@ def main():
     r, c = 0, -1
     foto = tk.PhotoImage(file="./assets/empty.png")
 
-    overlabel = tk.PhotoImage(file=f"./assets/{table['next']}.png")
-
     for i in range(0, 9):
+        overlabel = tk.PhotoImage()
         c += 1
         if c % 3 == 0:
             r += 1
             c = 0
 
         bt = tk.Button(image=foto,
-                       command=lambda x=i, y=c, z=r: lib.imgbt(root, y, z, overlabel),
-                       width=100, height=100)
-        bt.grid(row=r, column=c)
+                       command=lambda w=overlabel, x=i, y=c, z=r:
+                       lib.imgbt(root, y, z, w))
+        bt.grid(row=r, column=c, sticky="nsew")
 
     root.mainloop()
 
