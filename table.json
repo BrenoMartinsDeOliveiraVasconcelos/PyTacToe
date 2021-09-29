@@ -2,13 +2,13 @@
   "next": "circle",
   "positions": [
     [
-      "a",
-      "b",
+      "circle",
+      "x",
       "c"
     ],
     [
       "d",
-      "e",
+      "circle",
       "f"
     ],
     [

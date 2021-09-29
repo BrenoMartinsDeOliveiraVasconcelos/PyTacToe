@@ -1,6 +1,7 @@
 import tkinter as tk
 import json
 from tkinter import messagebox
+from lib import utils
 
 
 def imgbt(root: tk.Tk, c: int, r: int, limg: tk.PhotoImage):
@@ -28,21 +29,30 @@ def imgbt(root: tk.Tk, c: int, r: int, limg: tk.PhotoImage):
                  table["positions"][2][:]]
     }
 
+    equality = False
     for k, v in keypositions.items():
+        print(f"KEY: {k}")
         if k != "line":
-            print(f"KEY: {k}")
-            index = 0
             i = ""
-            for i in v:
-                if index < len(v) - 1:
-                    if i == v[index+1]:
-                        equality = True
-                    else:
-                        equality = False
-                    print(equality)
+            equality = utils.compare(v)
             if equality:
                 messagebox.showinfo("ok", i)
+        else:
+            for i in v:
+                equality = utils.compare(i)
+                if equality:
+                    messagebox.showinfo("Ok", f"{i}")
+                    break
+
+    if equality:
+        row = -1
+        numb = -1
+        for pos in table["positions"]:
+            row += 1
+            for i in range(len(pos[row])):
+                numb += 1
+                pos[row][i] = numb
 
     open("./table.json", "w").write(json.dumps(table, indent=2))
 
-    img.grid(row=r, column=c, sticky="nsew")
+    img.grid(row=r, column=c)

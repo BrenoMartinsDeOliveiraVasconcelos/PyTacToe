@@ -1,5 +1,5 @@
 import tkinter as tk
-from lib import lib
+from lib import mechanics
 import json
 
 table = json.load(open("./table.json"))
@@ -21,7 +21,7 @@ def main():
 
         bt = tk.Button(image=foto,
                        command=lambda w=overlabel, x=i, y=c, z=r:
-                       lib.imgbt(root, y, z, w))
+                       mechanics.imgbt(root, y, z, w))
         bt.grid(row=r, column=c, sticky="nsew")
 
     root.mainloop()
