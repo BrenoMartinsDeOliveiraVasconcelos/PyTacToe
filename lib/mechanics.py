@@ -30,28 +30,27 @@ def imgbt(root: tk.Tk, c: int, r: int, limg: tk.PhotoImage):
     }
 
     equality = False
+    win = ""
     for k, v in keypositions.items():
         print(f"KEY: {k}")
         if k != "line":
-            i = ""
             equality = utils.compare(v)
-            if equality:
-                messagebox.showinfo("ok", i)
         else:
             for i in v:
                 equality = utils.compare(i)
                 if equality:
-                    messagebox.showinfo("Ok", f"{i}")
                     break
+        if equality:
+            win = table["next"]
+            break
 
     if equality:
-        row = -1
         numb = -1
-        for pos in table["positions"]:
-            row += 1
-            for i in range(len(pos[row])):
+        for row in table["positions"]:
+            for column in range(len(row)):
                 numb += 1
-                pos[row][i] = numb
+                row[column] = f"{numb}"
+        messagebox.showinfo("Há um ganhador!", f"{win} ganhou!")
 
     open("./table.json", "w").write(json.dumps(table, indent=2))
 

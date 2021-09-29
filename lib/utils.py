@@ -8,5 +8,6 @@ def compare(l: list):
                 equality = True
             else:
                 equality = False
+                break
 
     return equality
